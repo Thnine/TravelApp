@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.GroupFragment.GroupRoutePlanFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/route_add_list"/>
+        <Button
+            android:layout_marginVertical="7dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@color/blue"
+            android:layout_gravity="center"
+            android:text="新建"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:id="@+id/group_route_plan_create_button"
+            />
+    </LinearLayout>
+
+</FrameLayout>

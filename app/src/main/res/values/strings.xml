@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TravelApp</string>
+    <string name="login_failed">登录失败</string>
+    <string name="register_mulUser_failed">用户名已经被占用</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_group_false">创建团队失败</string>
+    <string name="add_group_true">创建团队成功</string>
+    <string name="add_strategy_false">攻略发表失败</string>
+    <string name="add_strategy_true">攻略发表成功</string>
+</resources>

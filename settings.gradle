@@ -1,0 +1,5 @@
+include ':citypicker'
+include ':chat'
+include ':emoji'
+include ':app'
+rootProject.name = "TravelApp"

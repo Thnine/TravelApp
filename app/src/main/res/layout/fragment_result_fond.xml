@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.FondTabFragment.ResultFondFragment">
+
+    <!--标签切换界面-->
+    <androidx.fragment.app.FragmentTabHost
+        android:id="@android:id/tabhost"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".MainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--标签页-->
+            <TabWidget
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:id="@android:id/tabs"
+                android:gravity="bottom">
+            </TabWidget>
+            <!--标签页主题-->
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.fragment.app.FragmentTabHost>
+
+
+</FrameLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:background="@drawable/ic_sq"
+                android:scaleY="1.05"
+                android:scaleX="1.05">
+
+
+                <!--地理控件-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/group_info_plan_unit_province"
+                        android:textColor="@color/Black"
+                        android:text="北京"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="省"
+                        android:textColor="@color/Black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/group_info_plan_unit_city"
+                        android:textColor="@color/Black"
+                        android:text="北京"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="市"
+                        android:textColor="@color/Black"/>
+                </LinearLayout>
+
+
+                <!--日期控件-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--显示年日期-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginVertical="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="25dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="@color/Black"
+                            android:id="@+id/group_info_plan_unit_year"
+                            android:text="2021"></TextView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/Black"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="年"></TextView>
+                    </LinearLayout>
+                    <!--显示月日日期-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginVertical="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.7"
+                            android:layout_height="20dp"
+                            android:paddingLeft="21dp"
+                            android:textColor="@color/Black"
+                            android:id="@+id/group_info_plan_unit_month"
+                            android:text="10"></TextView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="8dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Black"
+                            android:text="月"></TextView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:paddingLeft="5dp"
+                            android:gravity="center"
+                            android:textColor="@color/Black"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/group_info_plan_unit_day"
+                            android:text="28"></TextView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.7"
+                            android:paddingLeft="5dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/Black"
+                            android:text="日"></TextView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+            <!--分割线-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGray"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:id="@+id/group_info_plan_unit_next"
+                android:src="@drawable/ic_next"
+                android:layout_gravity="center"
+                ></ImageView>
+
+        </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

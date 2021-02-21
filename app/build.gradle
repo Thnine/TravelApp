@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        /**
+        debug {
+            storeFile file('F:\\test\\TravelApp\\jks\\travelapp.jks')
+            storePassword 'deng5555'
+            keyAlias 'key0'
+            keyPassword 'deng5555'
+        }**/
+    }
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.travelapp"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation files('libs\\commons-cli-1.4.jar')
+    implementation files('libs\\commons-codec-1.13.jar')
+    implementation files('libs\\httpclient5-5.0.3.jar')
+    implementation files('libs\\httpclient5-cache-5.0.3.jar')
+    implementation files('libs\\httpclient5-fluent-5.0.3.jar')
+    implementation files('libs\\httpclient5-testing-5.0.3.jar')
+    implementation files('libs\\httpclient5-win-5.0.3.jar')
+    implementation files('libs\\httpcore5-5.0.2.jar')
+    implementation files('libs\\httpcore5-h2-5.0.2.jar')
+    implementation files('libs\\httpcore5-reactive-5.0.2.jar')
+    implementation files('libs\\httpcore5-testing-5.0.2.jar')
+    implementation files('libs\\jna-5.2.0.jar')
+    implementation files('libs\\jna-platform-5.2.0.jar')
+    implementation files('libs\\reactive-streams-1.0.2.jar')
+    implementation files('libs\\rxjava-2.2.8.jar')
+    implementation files('libs\\slf4j-api-1.7.25.jar')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.zaaach:citypicker:2.0.1'
+    implementation project(path: ':chat')
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation files('libs\\BaiduLBS_Android.jar')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    compile 'com.github.codbking:PickTime:v1.0.1'
+
+}
