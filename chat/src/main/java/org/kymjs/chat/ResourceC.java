@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -137,8 +139,8 @@ public class ResourceC {
         }
     }
 
-    public void openFile(Context context){
-        new load_Thread(this.file_id,this.file,context).start();
+    public void openFile(LoadingDialog LD){
+        new load_Thread(this.file_id,this.file,LD).start();
     }
 
     //加载线程
@@ -147,19 +149,24 @@ public class ResourceC {
         private int file_id;
         private File file;
         private Context context;
+        private LoadingDialog LD;
 
-        public load_Thread(int file_id,File file,Context context){
+        public load_Thread(int file_id,File file,LoadingDialog LD){
             super();
             this.file_id = file_id;
             this.file = file;
-            this.context = context;
+            this.context = LD.context;
+            this.LD = LD;
+            LD.showLoadingDialog("正在下载");
         }
 
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public void run() {
             super.run();
+            Log.d("ResourceC","ok1");
             if (!this.file.exists()) {
+                Log.d("ResourceC","ok2");
                 String url = "http://121.196.149.163:8080/dzwblog/GetResource_server";
                 //创建HTTP对象
                 HttpPost httpRequset = new HttpPost(url);
@@ -183,10 +190,12 @@ public class ResourceC {
                         }
                         JSONObject myjson = new JSONObject(entityStringBuilder.toString());
                         String temp_resource = myjson.getString("resource");
+                        Log.d("ResourceC",temp_resource);
                         byte[] toT = new byte[0];
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             toT = Base64.getDecoder().decode(temp_resource);
                         }
+                        Log.d("ResourceC","size:" + toT.length);
                         //byte数组转文件
                         //开始传输文件
                         BufferedOutputStream bos = null;
@@ -209,6 +218,7 @@ public class ResourceC {
                     e.printStackTrace();
                 }
             }
+            this.LD.closeLoadingDialog();
             //打开文件
             this.openFile(this.file.getPath());
 
@@ -222,7 +232,9 @@ public class ResourceC {
             File file = new File(filePath);
             if (!file.exists()){
                 //如果文件不存在
+                Looper.prepare();
                 Toast.makeText(context, "打开失败，原因：文件已经被移动或者删除", Toast.LENGTH_SHORT).show();
+                Looper.loop();
                 return;
             }
             /* 取得扩展名 */

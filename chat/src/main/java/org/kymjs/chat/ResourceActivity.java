@@ -63,7 +63,7 @@ public class ResourceActivity extends AppCompatActivity {
     private ResourceAdapter r_Ap;
     private Button ResourceAddButton;
     //加载对话框
-    LoadingDialog LD = new LoadingDialog();
+    LoadingDialog LD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,10 @@ public class ResourceActivity extends AppCompatActivity {
         group_id = getIntent().getIntExtra("group_id",0);
         username = getIntent().getStringExtra("username");
         Rs = new ArrayList<>();
+
+        //初始化工具
+        LD = new LoadingDialog(ResourceActivity.this);
+
         //初始化控件
         r_Rv = (RecyclerView) findViewById(R.id.resource_rv);
         r_Rv.setLayoutManager(new LinearLayoutManager(ResourceActivity.this));
@@ -122,7 +126,7 @@ public class ResourceActivity extends AppCompatActivity {
             r_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    myR.openFile(ResourceActivity.this);
+                    myR.openFile(LD);
                 }
             });
         }
@@ -330,24 +334,6 @@ public class ResourceActivity extends AppCompatActivity {
 
             }
         }).start();
-    }
-
-
-
-    private class LoadingDialog{
-        ProgressDialog mDefaultDialog;
-        //显示的加载框
-        public void showLoadingDialog(String message) {
-            mDefaultDialog = new ProgressDialog(ResourceActivity.this);
-            mDefaultDialog.setProgressStyle(android.app.ProgressDialog.STYLE_SPINNER); //默认就是小圆圈的那种形式
-            mDefaultDialog.setMessage(message);
-            mDefaultDialog.setCancelable(true);//默认true
-            mDefaultDialog.setCanceledOnTouchOutside(true);//默认true
-            mDefaultDialog.show();
-        }
-        public void closeLoadingDialog(){
-            this.mDefaultDialog.dismiss();
-        }
     }
 
 
