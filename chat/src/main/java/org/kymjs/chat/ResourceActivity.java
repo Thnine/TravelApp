@@ -1,6 +1,7 @@
 package org.kymjs.chat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -61,6 +62,8 @@ public class ResourceActivity extends AppCompatActivity {
     private RecyclerView r_Rv;
     private ResourceAdapter r_Ap;
     private Button ResourceAddButton;
+    //加载对话框
+    LoadingDialog LD = new LoadingDialog();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -256,6 +259,7 @@ public class ResourceActivity extends AppCompatActivity {
         //包装成ResourceC
         Log.d("ResourceActivity",file.getPath());
         ResourceC myR = new ResourceC(file);
+        LD.showLoadingDialog("正在上传");
         uploadResource(myR);
     }
 
@@ -267,6 +271,7 @@ public class ResourceActivity extends AppCompatActivity {
             public void run() {
                 String url = "http://121.196.149.163:8080/dzwblog/AddResource_server";
 
+                //显示加载对话框
                 boolean result = false;
                 //创建HTTP对象
                 HttpPost httpRequset = new HttpPost(url);
@@ -320,11 +325,33 @@ public class ResourceActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                LD.closeLoadingDialog();
+                updateResource();
 
             }
         }).start();
     }
+
+
+
+    private class LoadingDialog{
+        ProgressDialog mDefaultDialog;
+        //显示的加载框
+        public void showLoadingDialog(String message) {
+            mDefaultDialog = new ProgressDialog(ResourceActivity.this);
+            mDefaultDialog.setProgressStyle(android.app.ProgressDialog.STYLE_SPINNER); //默认就是小圆圈的那种形式
+            mDefaultDialog.setMessage(message);
+            mDefaultDialog.setCancelable(true);//默认true
+            mDefaultDialog.setCanceledOnTouchOutside(true);//默认true
+            mDefaultDialog.show();
+        }
+        public void closeLoadingDialog(){
+            this.mDefaultDialog.dismiss();
+        }
+    }
+
+
+
 
     /**
      * 拷被要上传的文件

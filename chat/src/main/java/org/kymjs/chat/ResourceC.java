@@ -1,5 +1,6 @@
 package org.kymjs.chat;
 
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Context;
