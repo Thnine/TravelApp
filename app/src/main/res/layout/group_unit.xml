@@ -12,27 +12,38 @@
         <!--分割线-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="7dp"
             android:orientation="horizontal"
             android:background="@color/lightGray"></LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White"
+        android:orientation="horizontal"
         tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="@color/lightGray"/>
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_group2"
             android:layout_margin="20dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="NoName"
-            android:textSize="50dp"
+            android:textSize="35dp"
             android:id="@+id/group_unit_name"
             android:textColor="@color/Black"/>
+        <LinearLayout
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/lightGray"/>
     </LinearLayout>
         <!--分割线-->
         <LinearLayout

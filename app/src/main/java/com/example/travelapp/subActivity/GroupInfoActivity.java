@@ -142,6 +142,21 @@ public class GroupInfoActivity extends AppCompatActivity{
 
     //初始化百度地图
     private void initBaiduMap(){
+        //获取定位权限
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        }
         //初始化地图
         GroupInfoMap= (MapView)findViewById(R.id.group_info_map_view);
         BaiduMapController =  GroupInfoMap.getMap();
@@ -161,7 +176,7 @@ public class GroupInfoActivity extends AppCompatActivity{
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setScanSpan(1000);
-
+        option.setIsNeedAddress(true);
         //设置locationClientOption
         mLocationClient.setLocOption(option);
 

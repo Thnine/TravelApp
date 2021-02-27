@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.travelapp.Fragment.TabFragment.FFond;
 import com.example.travelapp.Fragment.TabFragment.FFriend;
 import com.example.travelapp.Fragment.TabFragment.FGroup;
+import com.example.travelapp.Fragment.TabFragment.FMe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(FFriend.class);
         fragmentList.add(FGroup.class);
         fragmentList.add(FFond.class);
-        fragmentList.add(FFond.class);
+        fragmentList.add(FMe.class);
         tabhost.setup(this,getSupportFragmentManager(),android.R.id.tabcontent);
-        icon_Tabs = new int[]{R.drawable.ic_friend,R.drawable.ic_group,R.drawable.ic_search};
-        text_Tabs = new String[]{"好友","队伍","推荐"};
+        icon_Tabs = new int[]{R.drawable.ic_friend,R.drawable.ic_group,R.drawable.ic_search,R.drawable.ic_me};
+        text_Tabs = new String[]{"好友","队伍","推荐","我的"};
 
-        for(int i = 0;i < 3;i++){
+        for(int i = 0;i < 4;i++){
             TabHost.TabSpec tabSpec = tabhost.newTabSpec(i+"").setIndicator(getIndicatorView(i));
             Bundle bundle = new Bundle();
             bundle.putString("username",username);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     //Tab选择事件，主要是修改被选中者为绿色
     private void TabChange(String s){
         int tabIndex = tabhost.getCurrentTab();
-        for(int i = 0;i < 3;i++){
+        for(int i = 0;i < 4;i++){
             View view = tabhost.getTabWidget().getChildAt(i);
             ImageView tab_icon = view.findViewById(R.id.tab_icon);
             TextView tab_text = view.findViewById(R.id.tab_text);

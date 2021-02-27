@@ -51,7 +51,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
                 .fromResource(R.drawable.ic_destination);
         // 设置定位图层的配置，设置图标跟随状态（图标一直在地图中心）
         MyLocationConfiguration config = new MyLocationConfiguration(
-                MyLocationConfiguration.LocationMode.FOLLOWING, true, marker);
+                MyLocationConfiguration.LocationMode.NORMAL, true, marker);
         mBaiduMap.setMyLocationConfigeration(config);
         // 当不需要定位时，关闭定位图层
         // baiduMap.setMyLocationEnabled(false);
