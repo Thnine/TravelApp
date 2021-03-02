@@ -14,13 +14,12 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/myback3"></ImageView>
+            android:scaleType="centerCrop"></ImageView>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/lightBlue"></ImageView>
+            android:background="@color/blue"></ImageView>
     </LinearLayout>
 
     <ImageView
@@ -30,7 +29,7 @@
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_round_rec"
-            app:tint="@color/colorAccent"></ImageView>
+            app:tint="@color/cp_colorPrimaryDark"></ImageView>
 
 
 

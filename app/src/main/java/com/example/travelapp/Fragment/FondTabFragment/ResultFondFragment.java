@@ -89,9 +89,9 @@ public class ResultFondFragment extends Fragment {
             View view = tabhost.getTabWidget().getChildAt(i);
             TextView tab_text = view.findViewById(R.id.fond_tab_text);
             if(i == tabIndex){
-                tab_text.setTextColor(Color.BLACK);
+                tab_text.setTextColor(Color.YELLOW);
             }else{
-                tab_text.setTextColor(Color.GRAY);
+                tab_text.setTextColor(Color.WHITE);
             }
         }
     }
@@ -103,10 +103,10 @@ public class ResultFondFragment extends Fragment {
         TextView tab_text = view.findViewById(R.id.fond_tab_text);
         tab_text.setText(text_Tabs[i]);
         if(i==0){
-            tab_text.setTextColor(Color.BLACK);
+            tab_text.setTextColor(Color.YELLOW);
         }
         else{
-            tab_text.setTextColor(Color.GRAY);
+            tab_text.setTextColor(Color.WHITE);
         }
         return view;
     }

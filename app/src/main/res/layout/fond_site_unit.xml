@@ -7,10 +7,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:textSize="30dp"
         android:gravity="center"
         android:text="景点标题"
+        android:textStyle="bold"
+        android:layout_marginVertical="10dp"
+        android:background="@color/PurpleBlue"
+        android:layout_marginHorizontal="10dp"
         android:id="@+id/fond_site_unit_title"></TextView>
 
     <TextView
@@ -18,8 +22,12 @@
         android:layout_height="wrap_content"
         android:text="景点介绍"
         android:padding="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
         android:inputType="textMultiLine"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="30dp"
+        android:background="@color/colorAccent"
         android:id="@+id/fond_site_unit_text"
         ></TextView>
 

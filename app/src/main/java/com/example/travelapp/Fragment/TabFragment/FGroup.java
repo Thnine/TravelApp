@@ -5,6 +5,8 @@ package com.example.travelapp.Fragment.TabFragment;
  * 队伍界面的fragment
  */
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -117,6 +119,10 @@ public class FGroup extends Fragment {
             super(itemView);
             //初始化控件
             GroupNameText = (TextView)itemView.findViewById(R.id.group_unit_name);
+            //配置字体
+            AssetManager mgr = getActivity().getAssets();
+            Typeface tf = Typeface.createFromAsset(mgr,"fonts/FZYASHJW_Xi.TTF");
+            GroupNameText.setTypeface(tf);
             //配置监听事件
             GroupNameText.setClickable(true);
             GroupNameText.setOnClickListener(new View.OnClickListener() {

@@ -13,8 +13,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/fond_tab_text"
         android:text="首页"
+        android:textStyle="bold"
+        android:textColor="@color/White"
+        android:background="@color/cp_colorPrimaryDark"
         android:gravity="center"
-        android:textSize="20sp"></TextView>
+        android:paddingVertical="5dp"
+        android:textSize="25dp"></TextView>
 
 
 </LinearLayout>

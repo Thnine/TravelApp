@@ -1,6 +1,8 @@
 package com.example.travelapp.Fragment.TabFragment;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -117,6 +119,9 @@ public class FFriend extends Fragment {
             super(itemView);
             mUnitIcon = (RoundImageView)itemView.findViewById(R.id.friend_unit_icon);
             mUnitUsername = (TextView)itemView.findViewById(R.id.friend_unit_username);
+            AssetManager mgr = getActivity().getAssets();
+            Typeface tf = Typeface.createFromAsset(mgr,"fonts/FZYASHJW_Xi.TTF");
+            mUnitUsername.setTypeface(tf);
             mUnitSignature = (TextView)itemView.findViewById(R.id.friend_unit_signature);
             mUnitUsername.setClickable(true);
             mUnitUsername.setOnClickListener(new View.OnClickListener() {

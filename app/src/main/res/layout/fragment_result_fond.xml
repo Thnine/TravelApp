@@ -21,7 +21,7 @@
             <!--标签页-->
             <TabWidget
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:id="@android:id/tabs"
                 android:gravity="bottom">
             </TabWidget>
