@@ -1,5 +1,6 @@
 package com.example.travelapp.Fragment.GroupFragment;
 
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import com.example.travelapp.Control.RoundImageView;
 import com.example.travelapp.Fragment.TabFragment.FFriend;
 import com.example.travelapp.R;
 import com.example.travelapp.entity.FriendC;
+import com.example.travelapp.utils.IconLoader;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -153,6 +155,9 @@ public class GroupMemberAddFragment extends Fragment {
         public void repaint(FriendC myfriend){
             this.myfriend = myfriend;
             MemberSelectUsername.setText(myfriend.getUsername());
+            IconLoader IL = new IconLoader(GroupMemberAddFragment.this);
+            IL.OnBindInfo(MemberSelectIcon,myfriend.getUsername());
+            IL.setIcon();
         }
 
     }

@@ -22,6 +22,7 @@ import com.example.travelapp.Control.RoundImageView;
 import com.example.travelapp.R;
 import com.example.travelapp.entity.FriendC;
 import com.example.travelapp.subActivity.SearchFriendActivity;
+import com.example.travelapp.utils.IconLoader;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -109,6 +110,7 @@ public class FFriend extends Fragment {
         RoundImageView mUnitIcon;
         TextView mUnitUsername;
         TextView mUnitSignature;
+        IconLoader IL;
 
 
         public FriendHolder(@NonNull View itemView) {
@@ -133,6 +135,9 @@ public class FFriend extends Fragment {
         public void repaint(FriendC myfriend){
             this.mUnitUsername.setText(myfriend.getUsername());
             //this.mUnitLastMessage.setText(myfriend.getLastMessage());
+            IL = new IconLoader(FFriend.this);
+            IL.OnBindInfo(this.mUnitIcon,myfriend.getUsername());
+            IL.setIcon();
         }
     }
 

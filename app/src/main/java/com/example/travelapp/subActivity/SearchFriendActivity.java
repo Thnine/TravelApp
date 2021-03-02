@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +24,7 @@ import com.example.travelapp.Control.RoundImageView;
 import com.example.travelapp.Fragment.TabFragment.FFriend;
 import com.example.travelapp.R;
 import com.example.travelapp.entity.FriendC;
+import com.example.travelapp.utils.IconLoader;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -116,6 +118,9 @@ public class SearchFriendActivity extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public void repaint(FriendC resultPeople){
             this.mUnitUsername.setText(resultPeople.getUsername());
+            IconLoader IL = new IconLoader(SearchFriendActivity.this);
+            IL.OnBindInfo(this.mUnitIcon,resultPeople.getUsername());
+            IL.setIcon();
             Drawable dr_add = getDrawable(R.drawable.ic_add2);
             mUnitAddButton.setBackground(dr_add);
             for(int i = 0;i < Friends.size();i++){

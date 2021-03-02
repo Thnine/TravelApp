@@ -15,7 +15,9 @@
  */
 package org.kymjs.chat.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Icon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,7 +29,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.kymjs.chat.ChatActivity.OnChatItemClickListener;
+import org.kymjs.chat.IconLoader;
 import org.kymjs.chat.R;
+import org.kymjs.chat.RoundImageView;
 import org.kymjs.chat.StringUtils;
 import org.kymjs.chat.UrlUtils;
 import org.kymjs.chat.bean.Message;
@@ -101,7 +105,7 @@ public class ChatAdapter extends BaseAdapter {
                 holder.username = (TextView)v.findViewById(R.id.left_username);
             }
             holder.layout_content = (RelativeLayout) v.findViewById(R.id.chat_item_layout_content);
-            holder.img_avatar = (ImageView) v.findViewById(R.id.chat_item_avatar);
+            holder.img_avatar = (RoundImageView) v.findViewById(R.id.chat_item_avatar);
             holder.img_chatimage = (ImageView) v.findViewById(R.id.chat_item_content_image);
             holder.img_sendfail = (ImageView) v.findViewById(R.id.chat_item_fail);
             holder.progress = (ProgressBar) v.findViewById(R.id.chat_item_progress);
@@ -151,9 +155,13 @@ public class ChatAdapter extends BaseAdapter {
 
         //显示头像
         if (data.getIsSend()) {
-            Glide.with(cxt).load(data.getFromUserAvatar()).placeholder(R.drawable.default_head).into(holder.img_avatar);
+            IconLoader IL = new IconLoader((Activity)cxt);
+            IL.OnBindInfo(holder.img_avatar,data.getFromUserName());
+            IL.setIcon();
         } else {
-            Glide.with(cxt).load(data.getToUserAvatar()).placeholder(R.drawable.default_head).into(holder.img_avatar);
+            IconLoader IL = new IconLoader((Activity)cxt);
+            IL.OnBindInfo(holder.img_avatar,data.getFromUserName());
+            IL.setIcon();
         }
 
         if (listener != null) {
@@ -198,7 +206,7 @@ public class ChatAdapter extends BaseAdapter {
 
     static class ViewHolder {
         TextView tv_date;
-        ImageView img_avatar;
+        RoundImageView img_avatar;
         TextView tv_chatcontent;
         ImageView img_chatimage;
         ImageView img_sendfail;

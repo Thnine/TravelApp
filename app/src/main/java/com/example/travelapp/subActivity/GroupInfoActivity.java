@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,6 +49,7 @@ import com.example.travelapp.R;
 import com.example.travelapp.entity.FriendC;
 import com.example.travelapp.entity.GroupC;
 import com.example.travelapp.entity.PlanRecord;
+import com.example.travelapp.utils.IconLoader;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -57,7 +59,6 @@ import org.apache.hc.core5.http.NameValuePair;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 import org.kymjs.chat.ChatActivity;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -291,6 +292,9 @@ public class GroupInfoActivity extends AppCompatActivity{
 
         public void repaint(FriendC myfriend){
             MemberNameEdit.setText(myfriend.getUsername());
+            IconLoader IL = new IconLoader(GroupInfoActivity.this);
+            IL.OnBindInfo(this.MemberIcon,myfriend.getUsername());
+            IL.reloadIcon();
         }
     }
 
