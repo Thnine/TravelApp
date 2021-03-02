@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
@@ -241,10 +244,24 @@ public class GroupInfoActivity extends AppCompatActivity{
                          .scaleX(0.1f).scaleY(0.1f);
                          BaiduMapController.addOverlay(Ooption);
                          locs.add(point);
+
                          if(locs.size() == mygroup.getPlanRecords().size()){
+                             Bitmap bitmap_0= BitmapFactory.decodeResource(getResources(), R.drawable.red_arrow);
+                             Bitmap bitmap_= resizeImage(bitmap_0,16,64);
+                             BitmapDescriptor mRedTexture=BitmapDescriptorFactory.fromBitmap(bitmap_);
+                             List<BitmapDescriptor> textureList = new ArrayList<BitmapDescriptor>();
+                             textureList.add(mRedTexture);
+                             // 添加纹理图片对应的顺序
+                             List<Integer> textureIndexs = new ArrayList<Integer>();
+                             for (int i=0;i<locs.size();i++){
+                                 textureIndexs.add(0);
+                             }
                              OverlayOptions mOverlayOptions = new PolylineOptions()
-                                     .width(10)
+                                     .textureIndex(textureIndexs)//设置分段纹理index数组
+                                     .customTextureList(textureList)//设置线段的纹理，建议纹理资源长宽均为2的n次方
+                                     .dottedLine(true)
                                      .color(0xAAFF0000)
+                                     .width(15)
                                      .points(locs);
                              Overlay mPolyline = BaiduMapController.addOverlay(mOverlayOptions);
                          }
@@ -262,7 +279,27 @@ public class GroupInfoActivity extends AppCompatActivity{
         }).start();
     }
 
-    //移动图片到指定经纬度出
+    public Bitmap resizeImage(Bitmap bitmap, int w, int h)
+    {
+        Bitmap BitmapOrg = bitmap;
+        int width = BitmapOrg.getWidth();
+        int height = BitmapOrg.getHeight();
+        int newWidth = w;
+        int newHeight = h;
+
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // if you want to rotate the Bitmap
+        // matrix.postRotate(45);
+        Bitmap resizedBitmap = Bitmap.createBitmap(BitmapOrg, 0, 0, width,
+                height, matrix, true);
+        return resizedBitmap;
+    }
+
+    //移动图片到指定经纬度
 
     //成员信息的RV配置
     private class GroupInfoMemberHolder extends RecyclerView.ViewHolder{

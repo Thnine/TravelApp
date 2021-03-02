@@ -5,9 +5,12 @@ import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.model.LatLng;
 import com.example.travelapp.R;
 
 import java.util.Map;
@@ -15,6 +18,7 @@ import java.util.Map;
 public class MyLocationListener extends BDAbstractLocationListener {
     private MapView mMapView;
     private BaiduMap mBaiduMap;
+    boolean firstflag = true;
 
     public MyLocationListener(MapView mMapView,BaiduMap mBaiduMap){
         this.mMapView = mMapView;
@@ -33,6 +37,14 @@ public class MyLocationListener extends BDAbstractLocationListener {
                 .direction(location.getDirection()).latitude(location.getLatitude())
                 .longitude(location.getLongitude()).build();
         mBaiduMap.setMyLocationData(locData);
+        //移动
+        if(firstflag) {
+            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(ll).zoom(18.0f);
+            mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            firstflag = false;
+        }
         chooseMyLocation(location.getLatitude(),location.getLongitude());
     }
 
