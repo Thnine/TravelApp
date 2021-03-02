@@ -91,7 +91,7 @@ public class FFond extends Fragment{
         CityPicker.getInstance()
                 .setFragmentManager(getActivity().getSupportFragmentManager())  //此方法必须调用
                 .enableAnimation(true)  //启用动画效果
-                .setLocatedCity(new LocatedCity("常德", "湖南", "101210101"))  //APP自身已定位的城市，默认为null（定位失败）
+                .setLocatedCity(new LocatedCity("长沙", "湖南", "101210101"))  //APP自身已定位的城市，默认为null（定位失败）
                 .setHotCities(hotCities)  //指定热门城市
                 .setOnPickListener(new OnPickListener() {
                     @Override
@@ -111,7 +111,7 @@ public class FFond extends Fragment{
                                 //定位完成之后更新数据
                                 //TODO
                                 CityPicker.getInstance()
-                                        .locateComplete(new LocatedCity("湖南", "常德", "101280601"), LocateState.SUCCESS);
+                                        .locateComplete(new LocatedCity("长沙", "湖南", "101280601"), LocateState.SUCCESS);
                             }
                         }, 2000);
                     }
