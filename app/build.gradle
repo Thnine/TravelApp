@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        /**
+
         debug {
             storeFile file('F:\\test\\TravelApp\\jks\\travelapp.jks')
             storePassword 'deng5555'
             keyAlias 'key0'
             keyPassword 'deng5555'
-        }**/
+        }
     }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"

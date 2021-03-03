@@ -1,5 +1,7 @@
 package com.example.travelapp.Listener;
 
+import android.util.Log;
+
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
@@ -38,6 +40,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
                 .longitude(location.getLongitude()).build();
         mBaiduMap.setMyLocationData(locData);
         //移动
+        Log.d("MyLocationListener","error:" + location.getLocType());
         if(firstflag) {
             LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
             MapStatus.Builder builder = new MapStatus.Builder();
@@ -45,7 +48,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
             mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
             firstflag = false;
         }
-        chooseMyLocation(location.getLatitude(),location.getLongitude());
+        //chooseMyLocation(location.getLatitude(),location.getLongitude());
     }
 
     private void chooseMyLocation(double la,double lo) {
@@ -58,7 +61,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
                 .build();
         // 设置定位数据
         mBaiduMap.setMyLocationData(locationData);
-        // 自定以图表
+        // 自定义图标
         BitmapDescriptor marker = BitmapDescriptorFactory
                 .fromResource(R.drawable.ic_destination);
         // 设置定位图层的配置，设置图标跟随状态（图标一直在地图中心）

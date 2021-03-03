@@ -135,7 +135,7 @@ public class GroupRoutePlanFragment extends Fragment {
         //设置类型
         dialog.setType(DateType.TYPE_YMD);
         //设置消息体的显示格式，日期格式
-        dialog.setMessageFormat("yyyy-MM-dd HH:mm");
+        dialog.setMessageFormat("yyyy-MM-dd");
         //设置选择回调
         dialog.setOnChangeLisener(null);
         //设置点击确定按钮回调

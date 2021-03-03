@@ -157,6 +157,9 @@ public class GroupInfoActivity extends AppCompatActivity{
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
+        if(ContextCompat.checkSelfPermission(GroupInfoActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
         if (!permissionList.isEmpty()) {
             String[] permissions = permissionList.toArray(new String[permissionList.size()]);
             ActivityCompat.requestPermissions(this, permissions, 1);
@@ -168,37 +171,24 @@ public class GroupInfoActivity extends AppCompatActivity{
         BaiduMapController.setMyLocationEnabled(true);
         //定位初始化
         mLocationClient = new LocationClient(this);
-
-        //配置Location权限
-        int checkPermission = ContextCompat.checkSelfPermission(GroupInfoActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(GroupInfoActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-        }
-
         //通过LocationClientOption设置LocationClient相关参数
         LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setScanSpan(1000);
         option.setIsNeedAddress(true);
         //设置locationClientOption
         mLocationClient.setLocOption(option);
-
         //注册LocationListener监听器
         MyLocationListener myLocationListener = new MyLocationListener(GroupInfoMap,BaiduMapController);
         mLocationClient.registerLocationListener(myLocationListener);
         //开启地图定位图层
         mLocationClient.start();
-
-        //绘制图标
+        //绘制图标与折线
         for(int i = 0;i < mygroup.getPlanRecords().size();i++){
             getLocByAddress(mygroup.getPlanRecords().get(i));
         }
-
-        //绘制折线
-        //TODO
-
-
     }
 
     public void getLocByAddress(final PlanRecord myplan) {
