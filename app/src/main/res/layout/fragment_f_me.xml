@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.TabFragment.FMe">
+    tools:context=".Fragment.TabFragment.FMe"
+    android:background="@color/lightGray">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="230dp"
+            android:background="@drawable/myback2"
             android:scaleType="centerCrop"></ImageView>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/blue"></ImageView>
     </LinearLayout>
-
+    <!--矩形方块
     <ImageView
             android:layout_marginTop="270dp"
             android:layout_width="300dp"
@@ -29,10 +35,71 @@
             android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_round_rec"
-            app:tint="@color/cp_colorPrimaryDark"></ImageView>
-
-
-
+            app:tint="@color/cp_colorPrimaryDark"></ImageView>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="230dp"
+        android:paddingVertical="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:textColor="@color/Black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Friends"
+                android:textSize="20dp"
+                android:textColor="@color/Black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:textColor="@color/Black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Groups"
+                android:textSize="20dp"
+                android:textColor="@color/Black"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:orientation="vertical">
+        <org.kymjs.chat.RoundImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:src="@drawable/white_png"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,10 +108,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <com.example.travelapp.Control.RoundImageView
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/anoymous_novec"
                 android:layout_marginTop="150dp"
@@ -52,23 +118,89 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:text="NoName"
                 android:typeface="monospace"
-                android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/Black"
                 android:gravity="center"
                 android:id="@+id/f_me_user_name"
                 android:textSize="30dp"></TextView>
         </LinearLayout>
-        
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="Follow"
+            app:bootstrapSize="lg"
+            app:roundedCorners="true"
+            app:showOutline="false"
+            android:backgroundTint="@color/Black"
+            android:layout_marginVertical="20dp"/>
         </LinearLayout>
-        
-    </LinearLayout>
-    
-    
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@color/white">
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/White"
+                app:bootstrapSize="lg"
+                app:bootstrapText="我的计划"
+                app:showOutline="true" />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="文件管理"
+                app:showOutline="true"
+                android:textColor="@color/Black"
+                app:bootstrapSize="lg"/>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="我的收藏"
+                app:showOutline="true"
+                android:textColor="@color/Black"
+                app:bootstrapSize="lg"/>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="我的消息"
+                app:showOutline="true"
+                android:textColor="@color/Black"
+                app:bootstrapSize="lg"/>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="好友动态"
+                app:showOutline="true"
+                android:textColor="@color/Black"
+                app:bootstrapSize="lg"/>
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                app:roundedCorners="true"
+                app:bootstrapBrand="danger"
+                android:text="退出"
+                android:layout_marginVertical="15dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+</LinearLayout>

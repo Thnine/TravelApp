@@ -9,22 +9,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-        <!--分割线-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="7dp"
-            android:orientation="horizontal"
-            android:background="@color/lightGray"></LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White"
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
-        <LinearLayout
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:background="@color/lightGray"/>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -39,11 +29,6 @@
             android:textSize="35dp"
             android:id="@+id/group_unit_name"
             android:textColor="@color/Black"/>
-        <LinearLayout
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:background="@color/lightGray"/>
     </LinearLayout>
         <!--分割线-->
         <LinearLayout

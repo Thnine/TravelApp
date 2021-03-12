@@ -16,6 +16,15 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/blue">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="好友"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="27dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"/>
         <!--控制控件居右的LinearLayout-->
         <LinearLayout
             android:layout_width="0dp"

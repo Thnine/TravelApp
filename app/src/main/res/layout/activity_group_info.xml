@@ -1,127 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightlightBlue"
     tools:context=".subActivity.GroupInfoActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/lightlightBlue"
         tools:ignore="MissingConstraints">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="小组信息"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/Black"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_goback"
+                    android:background="@color/white"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white">
+                <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:src="@drawable/ic_group3"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/group_info_text_group_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:text="GroupName"
+                        android:textColor="@color/Black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="这个小组的创建者超级懒的，什么都没说，希望能够以后补充些啥。" />
+                </LinearLayout>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/white"
+                        android:layout_marginVertical="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/white">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:textColor="@color/Black"
+                                android:layout_margin="10dp"
+                                android:text="小组成员"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <!--成员信息表格-->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/group_info_member_rv"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@color/blue"
-                    android:layout_marginBottom="10dp">
-                    <com.baidu.mapapi.map.MapView
-                        android:id="@+id/group_info_map_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="325dp"
-                        android:layout_margin="10dp"
-                        android:clickable="true" />
-                </LinearLayout>
-                <!--提示线-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--分割线-->
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_gravity="center"
-                        android:background="@color/Black"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="成员信息"
-                        android:textColor="@color/black"/>
-                    <!--分割线-->
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="10"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_gravity="center"
-                        android:background="@color/Black"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--成员信息表格-->
-                    <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/white">
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/group_info_member_rv"/>
-                </LinearLayout>
-                <!--提示线-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--分割线-->
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_gravity="center"
-                        android:background="@color/Black"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="旅程信息"
-                        android:textColor="@color/black"/>
-                    <!--分割线-->
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="10"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:layout_gravity="center"
-                        android:background="@color/Black"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--旅游计划表格-->
-                    <androidx.recyclerview.widget.RecyclerView
+                        android:orientation="horizontal"
+                        android:background="@color/white">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textColor="@color/Black"
+                            android:layout_margin="10dp"
+                            android:text="行程规划"/>
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/group_info_plan_rv"/>
+                        android:orientation="horizontal">
+                        <!--旅游计划表格-->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/group_info_plan_rv"/>
+                    </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_gravity="center"
-                    android:background="@color/Black"
-                    />
-                <Button
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:text="进入群聊"
-                    android:textColor="@color/White"
-                    android:background="@color/blue"
-                    android:id="@+id/group_info_enter_chat_button"
-                    android:layout_gravity="center"/>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:text="进入群聊"
+            android:textColor="@color/White"
+            android:background="@color/blue"
+            android:textStyle="bold"
+            android:id="@+id/group_info_enter_chat_button"
+            android:layout_gravity="center"/>
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:text="查看地图"
+            android:textColor="@color/White"
+            android:background="@color/red"
+            android:textStyle="bold"
+            android:id="@+id/group_info_enter_map_button"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</RelativeLayout>

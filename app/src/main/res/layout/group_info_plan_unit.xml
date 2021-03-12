@@ -10,14 +10,15 @@
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
-
-
             <LinearLayout
+                android:layout_margin="10dp"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:orientation="vertical"
                 android:background="@drawable/ic_sq"
                 android:scaleY="1.05"
+                android:onClick="onClick"
+                android:clickable="true"
                 android:scaleX="1.05">
 
 
