@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -134,6 +135,7 @@ public class GroupInfoActivity extends AppCompatActivity{
         GroupNameText = (TextView)findViewById(R.id.group_info_text_group_name);
         GroupNameText.setText(mygroup.getGroupname());
 
+
     }
 
 
@@ -217,6 +219,7 @@ public class GroupInfoActivity extends AppCompatActivity{
         private TextView PlanProvince;
         private TextView PlanCity;
         private ImageView next;
+        private LinearLayout PlanLay;
 
         public GroupInfoPlanHolder(@NonNull View itemView) {
             super(itemView);
@@ -226,8 +229,9 @@ public class GroupInfoActivity extends AppCompatActivity{
             PlanProvince = (TextView)itemView.findViewById(R.id.group_info_plan_unit_province);
             PlanCity = (TextView)itemView.findViewById(R.id.group_info_plan_unit_city);
             next = (ImageView)itemView.findViewById(R.id.group_info_plan_unit_next);
+            PlanLay = (LinearLayout)itemView.findViewById(R.id.plan_layout);
         }
-        public void repaint(PlanRecord myplan,int position){
+        public void repaint(final PlanRecord myplan, int position){
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(myplan.getPlanDate());
             PlanYear.setText(Integer.toString(calendar.get(Calendar.YEAR)));
@@ -238,6 +242,15 @@ public class GroupInfoActivity extends AppCompatActivity{
             if(position == mygroup.getPlanRecords().size() - 1){
                 next.setVisibility(View.GONE);
             }
+            PlanLay.setClickable(true);
+            PlanLay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(GroupInfoActivity.this,PlanInfoActivity.class);
+                    intent.putExtra("plan_id",myplan.getPlan_id());
+                    startActivity(intent);
+                }
+            });
         }
     }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/blue"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="行程信息"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"></TextView>
+        </LinearLayout>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginVertical="5dp"
+            android:scaleType="fitXY"
+            android:background="@color/blue"
+            android:layout_marginRight="5dp"
+            android:id="@+id/plan_note_add_button"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_add"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/plan_info_note_re"
+        android:layout_weight="1"/>
+
+</LinearLayout>

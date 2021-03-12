@@ -7,10 +7,12 @@ public class PlanRecord implements Serializable {
 
     Date PlanDate;
     LocationC PlanLoc;
+    int plan_id;
 
-    public PlanRecord(Date PlanDate,LocationC PlanLoc){
+    public PlanRecord(Date PlanDate,LocationC PlanLoc,int plan_id){
         this.PlanDate = PlanDate;
         this.PlanLoc = PlanLoc;
+        this.plan_id = plan_id;
     }
 
     public PlanRecord(){
@@ -38,5 +40,11 @@ public class PlanRecord implements Serializable {
         this.PlanLoc = PlanLoc;
     }
 
+    public int getPlan_id(){
+        return this.plan_id;
+    }
 
+    public void setPlan_id(int plan_id) {
+        this.plan_id = plan_id;
+    }
 }

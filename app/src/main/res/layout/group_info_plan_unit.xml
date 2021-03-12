@@ -17,6 +17,7 @@
                 android:orientation="vertical"
                 android:background="@drawable/ic_sq"
                 android:scaleY="1.05"
+                android:id="@+id/plan_layout"
                 android:onClick="onClick"
                 android:clickable="true"
                 android:scaleX="1.05">

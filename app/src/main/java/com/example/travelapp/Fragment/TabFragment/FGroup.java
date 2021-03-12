@@ -215,7 +215,9 @@ public class FGroup extends Fragment {
                             //获取计划信息
                             int plan_num = temp_ob.getInt("plan_num");
                             for(int j = 0;j < plan_num;j++) {
-                                PlanRecords.add(new PlanRecord(new Date(temp_ob.getLong("date"+j)),new LocationC(temp_ob.getString("province"+j),temp_ob.getString("city"+j))));
+                                PlanRecord PL = new PlanRecord(new Date(temp_ob.getLong("date"+j)),new LocationC(temp_ob.getString("province"+j),temp_ob.getString("city"+j)),temp_ob.getInt("plan_id"+j));
+                                PlanRecords.add(PL);
+                                Log.d("FGroup","plan_id" + PL.getPlan_id());
                             }
                             //获取组名信息
                             String group_name = temp_ob.getString("group_name");
