@@ -1,7 +1,9 @@
 package com.example.travelapp.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 //攻略类
 public class StrategyC implements Serializable {
@@ -10,6 +12,7 @@ public class StrategyC implements Serializable {
     private String text;
     private String title;
     private String city;
+    private List<img_loader> imgs = new ArrayList<>();
 
     public StrategyC(){
 
@@ -22,6 +25,13 @@ public class StrategyC implements Serializable {
         this.city = city;
     }
 
+    public void setImgs(List<img_loader> imgs) {
+        this.imgs = imgs;
+    }
+
+    public List<img_loader> getImgs() {
+        return imgs;
+    }
 
     public float getScore() {
         return score;

@@ -1,6 +1,9 @@
 package com.example.travelapp.Fragment.FondTabFragment;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -11,10 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -23,6 +29,8 @@ import com.example.travelapp.Fragment.TabFragment.FFriend;
 import com.example.travelapp.R;
 import com.example.travelapp.entity.FriendC;
 import com.example.travelapp.entity.StrategyC;
+import com.example.travelapp.entity.img_entity;
+import com.example.travelapp.entity.img_loader;
 import com.example.travelapp.subActivity.StrategyAddActivity;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -35,6 +43,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -98,15 +107,25 @@ public class StrategyFondTabFragment extends Fragment {
         private RatingBar s_score;
         private TextView s_username;
         private RoundImageView s_icon;
+        private RecyclerView ImageRe;
+        private ImageAdapter ImageAp;
+        private List<img_loader> imgs;
 
         public StrategyHolder(@NonNull View itemView) {
             super(itemView);
+            imgs = new ArrayList<>();
             //初始化控件
             s_title = (TextView)itemView.findViewById(R.id.strategy_title);
             s_text = (TextView)itemView.findViewById(R.id.strategy_text);
             s_score = (RatingBar)itemView.findViewById(R.id.strategy_score);
             s_username = (TextView)itemView.findViewById(R.id.strategy_name);
             s_icon = (RoundImageView)itemView.findViewById(R.id.strategy_icon);
+            ImageRe = (RecyclerView)itemView.findViewById(R.id.strategy_image_re);
+            LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity());
+            linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+            ImageRe.setLayoutManager(linearLayoutManager1);
+            ImageAp = new ImageAdapter(imgs);
+            ImageRe.setAdapter(ImageAp);
         }
 
         public void repaint(StrategyC mys){
@@ -114,7 +133,65 @@ public class StrategyFondTabFragment extends Fragment {
             s_text.setText(mys.getText());
             s_score.setRating(mys.getScore());
             s_username.setText(mys.getWriter());
+            List<img_loader> temp_imgs = mys.getImgs();
+            imgs.clear();
+            for(int i = 0;i < temp_imgs.size();i++){
+                imgs.add(temp_imgs.get(i));
+                Log.d("SFTF","path is " + temp_imgs.get(i).get_content().getPath());
+            }
+            if(temp_imgs.size()==0){
+                ImageRe.setVisibility(View.GONE);
+            }
+            else {
+                ImageRe.setVisibility(View.VISIBLE);
+            }
         }
+
+        private class ImageHolder extends  RecyclerView.ViewHolder{
+            ImageView Imagev;
+            public ImageHolder(@NonNull View itemView) {
+                super(itemView);
+                Imagev = (ImageView)itemView.findViewById(R.id.strategy_image_unit);
+            }
+            public void repaint(img_loader myimg){
+                //申请权限
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M
+                        && getActivity().checkSelfPermission
+                        (Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+                {
+                    getActivity().requestPermissions(new String[]{
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+                }
+                myimg.load_pic(Imagev,getActivity());
+            }
+
+        }
+        private class ImageAdapter extends RecyclerView.Adapter<ImageHolder>{
+            List<img_loader> imgs;
+            public ImageAdapter(List<img_loader> imgs){
+                this.imgs = imgs;
+            }
+            @NonNull
+            @Override
+            public ImageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+                View view = layoutInflater.inflate(R.layout.strategy_image_unit,parent,false);
+                return new ImageHolder(view);
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull ImageHolder holder, int position) {
+                img_loader myimg = this.imgs.get(position);
+                holder.repaint(myimg);
+            }
+
+            @Override
+            public int getItemCount() {
+                return imgs.size();
+            }
+        }
+
     }
 
     private class StrategyAdapter extends RecyclerView.Adapter<StrategyHolder>{
@@ -180,6 +257,13 @@ public class StrategyFondTabFragment extends Fragment {
                             String text = temp_ob.getString("text");
                             String city = temp_ob.getString("city");
                             StrategyC temp_s = new StrategyC(username,score,title,text,city);
+                            int img_num = temp_ob.getInt("img_num");
+                            List<img_loader> imgs = new ArrayList<>();
+                            for(int j = 0;j < img_num;j++){
+                                int img_id = temp_ob.getInt("img_id"+j);
+                                imgs.add(new img_loader(img_id,new File( getContext().getCacheDir().getPath() + File.separator + img_id + ".jpg")));
+                            }
+                            temp_s.setImgs(imgs);
                             ss.add(temp_s);
                         }
 
